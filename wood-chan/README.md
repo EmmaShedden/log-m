@@ -12,12 +12,14 @@ Source: [_Fractional Brownian motion in a Nutshell_, Georgiy Shevchenko](https:/
     - Since $B^H$ is self-stationary, $B_{t_k}^H = B_{k/N}^H = N^{-2H} B_k^H$ where $k \in I_0$.
 
 - We know the covariance function of $B^H$ from its definition:
+
 $$ \text{Cov}(B^H_s, B^H_t) = \mathbb{E}[B^H_s B^H_t] = \frac{1}{2}(t^{2H} + s^{2H} - |t - s|^{2H}) $$
 
 - Let $\xi_k = \xi_k^H := B_k^H - B_{k-1}^H = N^{-2H} \left ( B_{t_k}^H - B_{t_{k-1}}^H \right )$ for $k \in I_1 := \{1, \cdots, N\}$.
     - $\xi_0 = \xi_0^H := B_0^H = 0$ with probability $1$.
 
 - Now, $\xi := (\xi_1, \cdots, \xi_N)$ is a centered Gaussian vector:
+
 $$ \mathbb{E}(\xi_k)
  = \mathbb{E}[B_k^H - B_{k-1}^H]
  = \mathbb{E}[B_k^H] - \mathbb{E}[B_{k-1}^H]
@@ -33,6 +35,7 @@ $$ \mathbb{E}(\xi_k)
 
 ### Covariance matrix of $\xi$
 - We can calculate the covariance function (matrix) of $\xi$ using its relationship to $B^H$:
+
 $$ \begin{align*}
 \text{Cov}(\xi_i, ~ \xi_j) 
 
@@ -130,6 +133,7 @@ $$ \text{cov}(\xi) = \begin{pmatrix}
 - Let $M := 2(N-1)$.
 
 - Let the coefficients $c_k$ for $k \in \{ 0, \cdots, M-1 \}$ be defined as:
+
 $$\begin{align*}
 c_0 &= 1, & \\
 c_k &= \rho_H(k), & 1 \leq k \leq N-1  \\
@@ -165,6 +169,7 @@ $$
 $$ q_{jk} = \frac{1}{\sqrt{M}} \exp {\left( -2\pi i \frac{jk}{M} \right)} $$
 
 - Observe that $Q^* =: ( q^*_{jk} ) = ( \overline{ q_{kj}} ) = ( \overline{ q_{jk}} )$ so that $\forall j, ~ k \in \{0, ~ \cdots, ~ M-1 \}$:
+
 $$ \begin{align*}
 (QQ^*)_{jk}
  &= \sum_{r=0}^{M-1} q_{jr} q^*_{rk} & \\
@@ -187,6 +192,7 @@ $$ \begin{align*}
 - Therefore by symmetry, $Q Q^* = Q^* Q = I_M$, and $Q$ is unitary.
 
 - Right-multiplying $Q$ and $Q^*$, respectively, by a column vector $a = (a_0, ~ \cdots, ~ a_{M-1})^T \in \mathbb{C}^M$ gives:
+
 $$\begin{align*}
 (Qa)_j &= \sum_{k=0}^{M-1} q_{jk} a_k
  = \frac{1}{\sqrt{M}} \sum_{k=0}^{M-1} a_k \exp {\left( -2\pi i \frac{jk}{M} \right)} & \text{and} \\
@@ -201,6 +207,7 @@ $$\begin{align*}
     - DFT returns the point-value representation where the points are the $n$-th roots of unity, i.e. $(X_0, ~ \cdots, ~ X_{n-1})$ where $X_k = f(x_k)$ for $\displaystyle{ x_k = \exp(-2 \pi i \frac{k}{n}) }$, $ k \in \{ 0, ~ \cdots, ~ n-1 \} $.
 
 - In other words, for input vector $a = (a_0, ~ \cdots, ~ a_{n-1}) \in \mathbb{C}^n$, DFT outputs $\text{DFT}(a) = X = (X_0, ~ \cdots, ~ X_{n-1}) \in \mathbb{C}^n$ such that:
+
 $$ X_j
  = \sum_{k=0}^{n-1} a_k \exp \left (-2 \pi i \frac{j}{n} \right )^k
  = \sum_{k=0}^{n-1} a_k \exp \left (-2 \pi i \frac{jk}{n} \right ) ~~~~ \forall j \in \{ 0, ~ \cdots, ~ n-1 \} $$
@@ -210,6 +217,7 @@ $$ X_j
 - The inverse DFT simply takes the roots of unity in the opposite direction around the unit circle, i.e. the conjugates of the sequence of points given above; it also scales by a factor of $\frac{1}{n}$.
 
 - Consider $a$, $X$, and $n$ from above.
+
 $$\begin{align*}
 (\text{DFT}^{-1} \circ \text{DFT})(a) &= \text{DFT}^{-1}(X) & \\
 
@@ -296,6 +304,7 @@ where the last step references the construction of the circulant matrix [above](
 - We have proved $Q$ is unitary, and by construction $\Lambda$ is diagonal. It follows that the $\lambda_k$ are the eigenvalues of C.
 
 - By previous assertion, the $C$ is positive definite, so has positive, real eigenvalues. Therefore $\Lambda$ so has a real square root matrix constructed efficiently by raising each diagonal entry to the power of $\frac{1}{2}$. Further, all the relevant matrices are symmetric. So, 
+
 $$C = (Q \Lambda^{1/2} Q^*) \cdot (Q \Lambda^{1/2} Q^*) = (Q \Lambda^{1/2} Q^*) \cdot (Q \Lambda^{1/2} Q^*)^*$$
 
 - Let $S := Q \Lambda^{1/2} Q^*$. Therefore, $S$ is real. (TODO)
@@ -303,6 +312,7 @@ $$C = (Q \Lambda^{1/2} Q^*) \cdot (Q \Lambda^{1/2} Q^*) = (Q \Lambda^{1/2} Q^*) 
 - Therefore $(\xi_1, ~ \cdots, ~ \xi_{N-1}, ~ \xi_{N-1}, ~ \cdots, ~ \xi_1) = S\zeta$ where $\zeta$ is standard Gaussian. (TODO)
 
 - This can be computed efficiently using DFT: 
+
 $$ \begin{align*}
 (\xi_1, ~ \cdots, ~ \xi_{N-1}, ~ \xi_{N-1}, ~ \cdots, ~ \xi_1)
 
