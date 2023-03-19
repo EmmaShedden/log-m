@@ -39,62 +39,62 @@ $$ \mathbb{E}(\xi_k)
 $$ \begin{aligned}
 \text{Cov}(\xi_i, ~ \xi_j) 
 
- &= \text{Cov}(B_i^H - B_{i-1}^H, ~ B_j^H - B_{j-1}^H) & \text{definition of } \xi \\
+ &= \text{Cov}(B_i^H - B_{i-1}^H, ~ B_j^H - B_{j-1}^H) & \text{definition of } \xi \cr
 
  &= \mathbb{E} \left[ \left(B_i^H - B_{i-1}^H \right) \left(B_j^H - B_{j-1}^H \right) \right] - \mathbb{E} \left[B_i^H - B_{i-1}^H \right] \cdot \mathbb{E} \left[B_j^H - B_{j-1}^H \right] 
-    & \text{definition of covariance} \\
+    & \text{definition of covariance} \cr
 
  &= \mathbb{E} \left[ \left(B_i^H - B_{i-1}^H \right) \left(B_j^H - B_{j-1}^H \right) \right] - \left(\mathbb{E} \left[B_i^H \right] - \mathbb{E} \left[B_{i-1}^H \right] \right) \cdot \left(\mathbb{E} \left[B_j^H \right] - \mathbb{E} \left[B_{j-1}^H \right] \right) 
-    & \text{linearity of expectation} \\
+    & \text{linearity of expectation} \cr
  
  &= \mathbb{E} \left[ \left(B_i^H - B_{i-1}^H \right) \left(B_j^H - B_{j-1}^H \right) \right] - (0 - 0) (0 - 0) 
-    & B^H \text{ is centered by definition} \\
+    & B^H \text{ is centered by definition} \cr
  
  &= \mathbb{E} \left[B_i^H B_j^H - B_i^H B_{j-1}^H - B_{i-1}^H B_j^H + B_{i-1}^H B_{j-1}^H \right] 
-    & \\
+    & \cr
  
  &= \mathbb{E} \left[B_i^H B_j^H \right]
   - \mathbb{E} \left[B_i^H B_{j-1}^H \right]
   - \mathbb{E} \left[B_{i-1}^H B_j^H \right]
   + \mathbb{E} \left[B_{i-1}^H B_{j-1}^H \right] 
-    & \text{linearity of expectation} \\
+    & \text{linearity of expectation} \cr
  
- &=                 \frac{1}{2} \left(i^{2H} + j^{2H} - \left| i - j \right|^{2H} \right) & \\
-  &\hspace{0.4cm} - \frac{1}{2} \left(i^{2H} + (j-1)^{2H} - \left| i - (j-1) \right|^{2H} \right) & \\
-  &\hspace{0.4cm} - \frac{1}{2} \left((i-1)^{2H} + j^{2H} - \left| (i-1) - j \right|^{2H} \right)  & \\
+ &=                 \frac{1}{2} \left(i^{2H} + j^{2H} - \left| i - j \right|^{2H} \right) & \cr
+  &\hspace{0.4cm} - \frac{1}{2} \left(i^{2H} + (j-1)^{2H} - \left| i - (j-1) \right|^{2H} \right) & \cr
+  &\hspace{0.4cm} - \frac{1}{2} \left((i-1)^{2H} + j^{2H} - \left| (i-1) - j \right|^{2H} \right)  & \cr
   &\hspace{0.4cm} + \frac{1}{2} \left((i-1)^{2H} + (j-1)^{2H} - \left| (i-1) - (j-1) \right|^{2H} \right)
-    & \text{definition of fBm} \\
+    & \text{definition of fBm} \cr
  
  &= \frac{1}{2} \left(- | i - j |^{2H}
                       + | i - (j-1) |^{2H}
                       + | (i-1) - j |^{2H}
                       - | (i-1) - (j-1) |^{2H}
                 \right) 
-    & \\
+    & \cr
  
  &= \frac{1}{2} \left(-2 | i - j |^{2H}
                        + | i - (j-1) |^{2H}
                        + | (i-1) - j |^{2H}
                 \right) 
-    & \\
+    & \cr
  
  &= \frac{1}{2} \left(-2 | i-j |^{2H}
                        + | i-j+1 |^{2H}
                        + | i-j-1 |^{2H}
                 \right) 
-    & \\
+    & \cr
  
  &= \frac{1}{2} \left(-2 | i-j |^{2H}
                        + | i-j+1 |^{2H}
                        + | i-j-1 |^{2H}
                 \right)
-    & (*) \\
+    & (*) \cr
  
  &= \frac{1}{2} \left(-2 n^{2H}
                        + (n+1)^{2H}
                        + (n-1)^{2H}
                 \right)
-    & \text{where } n := |i-j| \text{, } i \neq j \in I_1 \\ \\
+    & \text{where } n := |i-j| \text{, } i \neq j \in I_1 \cr \cr
 
 \text{and ~ Cov}(\xi_i, ~ \xi_i)
  
@@ -102,10 +102,10 @@ $$ \begin{aligned}
                        + | i-i+1 |^{2H}
                        + | i-i-1 |^{2H}
                 \right)
-    & \text{same as above, up to } (*); ~ j := i \\
+    & \text{same as above, up to } (*); ~ j := i \cr
 
  &= \frac{1}{2} \left(1^{2H} + 1^{2H} \right)
-    & \\
+    & \cr
 
  &= 1 & \text{where } i \in I_1
 \end{aligned}$$
@@ -119,12 +119,12 @@ $$ \begin{aligned}
     - So all the principle diagonal elements are $\rho_H(0) = 1$, all the super-diagonal and sub-diagonal elements are $\rho_H(1)$, the next two diagonals have $\rho_H(2)$, and so on:
 
 $$ \text{cov}(\xi) = \begin{pmatrix}
-1           & \rho_H(1)   & \rho_H(2)   & \cdots & \rho_H(N-2)  & \rho_H(N-1)   \\
-\rho_H(1)   & 1           & \rho_H(1)   & \cdots & \rho_H(N-3)  & \rho_H(N-2)   \\
-\rho_H(2)   & \rho_H(1)   & 1           & \cdots & \rho_H(N-4)  & \rho_H(N-3)   \\
-\vdots      & \vdots      & \vdots      & \ddots & \vdots       & \vdots        \\
-\rho_H(N-2) & \rho_H(N-3) & \rho_H(N-4) & \cdots & 1            & \rho_H(1)     \\
-\rho_H(N-1) & \rho_H(N-2) & \rho_H(N-3) & \cdots & \rho_H(1)    & 1             \\
+1           & \rho_H(1)   & \rho_H(2)   & \cdots & \rho_H(N-2)  & \rho_H(N-1)   \cr
+\rho_H(1)   & 1           & \rho_H(1)   & \cdots & \rho_H(N-3)  & \rho_H(N-2)   \cr
+\rho_H(2)   & \rho_H(1)   & 1           & \cdots & \rho_H(N-4)  & \rho_H(N-3)   \cr
+\vdots      & \vdots      & \vdots      & \ddots & \vdots       & \vdots        \cr
+\rho_H(N-2) & \rho_H(N-3) & \rho_H(N-4) & \cdots & 1            & \rho_H(1)     \cr
+\rho_H(N-1) & \rho_H(N-2) & \rho_H(N-3) & \cdots & \rho_H(1)    & 1             \cr
 \end{pmatrix}$$
 
 - It is a fact, which we do not prove here, that the matrix $\text{cov}(\xi)$ is positive definite, so it has positive, real eigenvalues.
@@ -135,9 +135,9 @@ $$ \text{cov}(\xi) = \begin{pmatrix}
 - Let the coefficients $c_k$ for $k \in \{ 0, \cdots, M-1 \}$ be defined as:
 
 $$\begin{aligned}
-c_0 &= 1, & \\
-c_k &= \rho_H(k), & 1 \leq k \leq N-1  \\
-c_k &= \rho_H(M-k), & N \leq k \leq M-1 \\
+c_0 &= 1, & \cr
+c_k &= \rho_H(k), & 1 \leq k \leq N-1  \cr
+c_k &= \rho_H(M-k), & N \leq k \leq M-1 \cr
 \text{which imply } ~~~ c_{M-k} &= \rho_H(k), & 1 \leq k \leq N-1
 \end{aligned}$$
 
@@ -145,20 +145,20 @@ c_k &= \rho_H(M-k), & N \leq k \leq M-1 \\
 
 $$ C := \text{circ}(c_0, ~ \cdots, ~ c_{M-1}) = 
 \begin{pmatrix}
- c_0        & c_1       & c_2       & \cdots    & c_{M-2}   & c_{M-1}   \\
- c_{M-1}    & c_0       & c_1       & \cdots    & c_{M-3}   & c_{M-2}   \\
- c_{M-2}    & c_{M-1}   & c_0       & \cdots    & c_{M-4}   & c_{M-3}   \\
- \vdots     & \vdots    & \vdots    & \ddots    & \vdots    & \vdots    \\
- c_2        & c_3       & c_4       & \cdots    & c_0       & c_1       \\
- c_1        & c_2       & c_3       & \cdots    & c_{M-1}   & c_0       \\
+ c_0        & c_1       & c_2       & \cdots    & c_{M-2}   & c_{M-1}   \cr
+ c_{M-1}    & c_0       & c_1       & \cdots    & c_{M-3}   & c_{M-2}   \cr
+ c_{M-2}    & c_{M-1}   & c_0       & \cdots    & c_{M-4}   & c_{M-3}   \cr
+ \vdots     & \vdots    & \vdots    & \ddots    & \vdots    & \vdots    \cr
+ c_2        & c_3       & c_4       & \cdots    & c_0       & c_1       \cr
+ c_1        & c_2       & c_3       & \cdots    & c_{M-1}   & c_0       \cr
 \end{pmatrix} = 
 \begin{pmatrix}
- 1          & \rho_H(1) & \rho_H(2) & \cdots    & \rho_H(2) & \rho_H(1) \\
- \rho_H(1)  & 1         & \rho_H(1) & \cdots    & \rho_H(3) & \rho_H(2) \\
- \rho_H(2)  & \rho_H(1) & 1         & \cdots    & \rho_H(4) & \rho_H(3) \\
- \vdots     & \vdots    & \vdots    & \ddots    & \vdots    & \vdots    \\
- \rho_H(2)  & \rho_H(3) & \rho_H(4) & \cdots    & 1         & \rho_H(1) \\
- \rho_H(1)  & \rho_H(2) & \rho_H(3) & \cdots    & \rho_H(1) & 1         \\
+ 1          & \rho_H(1) & \rho_H(2) & \cdots    & \rho_H(2) & \rho_H(1) \cr
+ \rho_H(1)  & 1         & \rho_H(1) & \cdots    & \rho_H(3) & \rho_H(2) \cr
+ \rho_H(2)  & \rho_H(1) & 1         & \cdots    & \rho_H(4) & \rho_H(3) \cr
+ \vdots     & \vdots    & \vdots    & \ddots    & \vdots    & \vdots    \cr
+ \rho_H(2)  & \rho_H(3) & \rho_H(4) & \cdots    & 1         & \rho_H(1) \cr
+ \rho_H(1)  & \rho_H(2) & \rho_H(3) & \cdots    & \rho_H(1) & 1         \cr
 \end{pmatrix}
 $$
 
@@ -172,20 +172,20 @@ $$ q_{jk} = \frac{1}{\sqrt{M}} \exp {\left( -2\pi i \frac{jk}{M} \right)} $$
 
 $$ \begin{aligned}
 (QQ^*)_{jk}
- &= \sum_{r=0}^{M-1} q_{jr} q^*_{rk} & \\
- &= \sum_{r=0}^{M-1} q_{jr} \overline{q_{rk}} & \\
- &= \sum_{r=0}^{M-1} \frac{1}{\sqrt{M}} \exp {\left( -2\pi i \frac{jr}{M} \right)} \frac{1}{\sqrt{M}} \exp {\left( 2\pi i \frac{kr}{M} \right)} & \\
- &= \sum_{r=0}^{M-1} \frac{1}{M} \exp {\left( 2\pi i \frac{(k-j)r}{M} \right)} & \\
+ &= \sum_{r=0}^{M-1} q_{jr} q^*_{rk} & \cr
+ &= \sum_{r=0}^{M-1} q_{jr} \overline{q_{rk}} & \cr
+ &= \sum_{r=0}^{M-1} \frac{1}{\sqrt{M}} \exp {\left( -2\pi i \frac{jr}{M} \right)} \frac{1}{\sqrt{M}} \exp {\left( 2\pi i \frac{kr}{M} \right)} & \cr
+ &= \sum_{r=0}^{M-1} \frac{1}{M} \exp {\left( 2\pi i \frac{(k-j)r}{M} \right)} & \cr
  &= \begin{cases} 
-        \displaystyle{\sum_{r=0}^{M-1} \frac{1}{M} \cdot 1}, & k = j, \\
-         &  \\
-        \displaystyle{ \frac{1}{M} \cdot \frac{1 - \exp \{2 \pi i (k-j)\} }{1-\exp \{ 2 \pi i \frac{k-j}{M} \} } }, & k \neq j \\
-    \end{cases} & \text{by the geometric series formula} \\
+        \displaystyle{\sum_{r=0}^{M-1} \frac{1}{M} \cdot 1}, & k = j, \cr
+         &  \cr
+        \displaystyle{ \frac{1}{M} \cdot \frac{1 - \exp \{2 \pi i (k-j)\} }{1-\exp \{ 2 \pi i \frac{k-j}{M} \} } }, & k \neq j \cr
+    \end{cases} & \text{by the geometric series formula} \cr
  &= \begin{cases} 
-        \displaystyle{\frac{1}{M} \cdot M}, & k = j, \\
-         &  \\
-        \displaystyle{ \frac{1}{M} \cdot \frac{1 - 1^{k-j} }{1-\exp \{ 2 \pi i \frac{k-j}{M} \} } }, & k \neq j \\
-    \end{cases} & \text{note the denominator is nonzero by assumption} \\
+        \displaystyle{\frac{1}{M} \cdot M}, & k = j, \cr
+         &  \cr
+        \displaystyle{ \frac{1}{M} \cdot \frac{1 - 1^{k-j} }{1-\exp \{ 2 \pi i \frac{k-j}{M} \} } }, & k \neq j \cr
+    \end{cases} & \text{note the denominator is nonzero by assumption} \cr
  &= \delta_{jk}
 \end{aligned} $$
 
@@ -195,9 +195,9 @@ $$ \begin{aligned}
 
 $$\begin{aligned}
 (Qa)_j &= \sum_{k=0}^{M-1} q_{jk} a_k
- = \frac{1}{\sqrt{M}} \sum_{k=0}^{M-1} a_k \exp {\left( -2\pi i \frac{jk}{M} \right)} & \text{and} \\
+ = \frac{1}{\sqrt{M}} \sum_{k=0}^{M-1} a_k \exp {\left( -2\pi i \frac{jk}{M} \right)} & \text{and} \cr
 (Q^* a)_j &= \sum_{k=0}^{M-1} \overline{q_{jk}} a_k
- = \frac{1}{\sqrt{M}} \sum_{k=0}^{M-1} a_k \exp {\left( 2\pi i \frac{jk}{M} \right)} & \\
+ = \frac{1}{\sqrt{M}} \sum_{k=0}^{M-1} a_k \exp {\left( 2\pi i \frac{jk}{M} \right)} & \cr
 \end{aligned}$$
 
 ### Applying DFT
@@ -219,23 +219,23 @@ $$ X_j
 - Consider $a$, $X$, and $n$ from above.
 
 $$\begin{aligned}
-(\text{DFT}^{-1} \circ \text{DFT})(a) &= \text{DFT}^{-1}(X) & \\
+(\text{DFT}^{-1} \circ \text{DFT})(a) &= \text{DFT}^{-1}(X) & \cr
 
- &= \left ( \frac{1}{n} \sum_{j=0}^{n-1} X_j \exp \left (2 \pi i \frac{r}{n} \right )^j \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \\
+ &= \left ( \frac{1}{n} \sum_{j=0}^{n-1} X_j \exp \left (2 \pi i \frac{r}{n} \right )^j \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \cr
  
- &= \frac{1}{n} \left ( \sum_{j=0}^{n-1} X_j \exp \left (2 \pi i \frac{jr}{n} \right ) \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \\
+ &= \frac{1}{n} \left ( \sum_{j=0}^{n-1} X_j \exp \left (2 \pi i \frac{jr}{n} \right ) \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \cr
  
- &= \frac{1}{n} \left ( \sum_{j=0}^{n-1} \sum_{k=0}^{n-1} a_k \exp \left (-2 \pi i \frac{jk}{n} \right ) \exp \left (2 \pi i \frac{jr}{n} \right ) \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \\
+ &= \frac{1}{n} \left ( \sum_{j=0}^{n-1} \sum_{k=0}^{n-1} a_k \exp \left (-2 \pi i \frac{jk}{n} \right ) \exp \left (2 \pi i \frac{jr}{n} \right ) \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \cr
  
- &= \frac{1}{n} \left ( \sum_{k=0}^{n-1} a_k \sum_{j=0}^{n-1} \exp \left (2 \pi i \frac{j(r-k)}{n} \right ) \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \\
+ &= \frac{1}{n} \left ( \sum_{k=0}^{n-1} a_k \sum_{j=0}^{n-1} \exp \left (2 \pi i \frac{j(r-k)}{n} \right ) \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \cr
  
- &= \frac{1}{n} \left ( \sum_{k=0}^{n-1} a_k n \delta_{kr} \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \text{by } (\dag) \text{ with } m = r - k \\
+ &= \frac{1}{n} \left ( \sum_{k=0}^{n-1} a_k n \delta_{kr} \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \text{by } (\dag) \text{ with } m = r - k \cr
  
- &= \left ( \sum_{k=0}^{n-1} a_k \delta_{kr} \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \\
+ &= \left ( \sum_{k=0}^{n-1} a_k \delta_{kr} \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \cr
  
- &=  ( a_r )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \\
+ &=  ( a_r )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \cr
  
- &= a & \\
+ &= a & \cr
 \end{aligned}$$
 
 - Proof of $(\dag)$:
@@ -243,15 +243,15 @@ $$\begin{aligned}
 $$\begin{aligned}
 \sum_{j=0}^{n-1} \exp \left (2 \pi i \frac{jm}{n} \right )
  &= \begin{cases} 
-        \displaystyle{\sum_{j=0}^{n-1} 1^{jm / n}}, & n ~ | ~ m, \text{ i.e. } \frac{m}{n} \in \mathbb{Z} \\
-         &  \\
-        \displaystyle{ \frac{1 - \exp \{2 \pi i m\} }{1-\exp \{ 2 \pi i \frac{m}{n} \} } }, & n ~ \not | ~ m \\
-    \end{cases} & \text{by the geometric series formula} \\
+        \displaystyle{\sum_{j=0}^{n-1} 1^{jm / n}}, & n ~ | ~ m, \text{ i.e. } \frac{m}{n} \in \mathbb{Z} \cr
+         &  \cr
+        \displaystyle{ \frac{1 - \exp \{2 \pi i m\} }{1-\exp \{ 2 \pi i \frac{m}{n} \} } }, & n ~ \not | ~ m \cr
+    \end{cases} & \text{by the geometric series formula} \cr
  &= \begin{cases} 
-        n, & n ~ | ~ m, \\
-         &  \\
-        \displaystyle{ \frac{1 - 1^{m} }{1-\exp \{ 2 \pi i \frac{m}{n} \} } }, & n ~ \not | ~ m \\
-    \end{cases} & \text{note the denominator is nonzero by assumption} \\
+        n, & n ~ | ~ m, \cr
+         &  \cr
+        \displaystyle{ \frac{1 - 1^{m} }{1-\exp \{ 2 \pi i \frac{m}{n} \} } }, & n ~ \not | ~ m \cr
+    \end{cases} & \text{note the denominator is nonzero by assumption} \cr
  &= n \delta_{n ~ | ~ m} & \text{for any } n \neq 0, m \in \mathbb{Z}
 \end{aligned}$$
 
@@ -267,35 +267,35 @@ $$\begin{aligned}
 $$ (Q \Lambda)_{jk} = q_{jk} \lambda_k = \frac{1}{\sqrt{M}} \exp {\left( -2\pi i \frac{jk}{M} \right)} \sum_{r=0}^{M-1}c_r \exp(2 \pi i \frac{kr}{M}) $$
 
 $$\begin{aligned}
-(Q \Lambda Q^*)_{js} &= \sum_{k=0}^{M-1} (Q \Lambda)_{jk} Q^*_{ks} & \\
+(Q \Lambda Q^*)_{js} &= \sum_{k=0}^{M-1} (Q \Lambda)_{jk} Q^*_{ks} & \cr
 
- &= \sum_{k=0}^{M-1} (Q \Lambda)_{jk} \overline{q_{ks}} & \\
+ &= \sum_{k=0}^{M-1} (Q \Lambda)_{jk} \overline{q_{ks}} & \cr
 
- &= \sum_{k=0}^{M-1} q_{jk} \lambda_k \overline{q_{ks}} & \\
+ &= \sum_{k=0}^{M-1} q_{jk} \lambda_k \overline{q_{ks}} & \cr
 
- &= \sum_{k=0}^{M-1} \frac{1}{\sqrt{M}} \exp {\left(-2\pi i \frac{jk}{M} \right)} \lambda_k \overline{\frac{1}{\sqrt{M}} \exp {\left(-2\pi i \frac{ks}{M} \right)}} & \\
+ &= \sum_{k=0}^{M-1} \frac{1}{\sqrt{M}} \exp {\left(-2\pi i \frac{jk}{M} \right)} \lambda_k \overline{\frac{1}{\sqrt{M}} \exp {\left(-2\pi i \frac{ks}{M} \right)}} & \cr
 
- &= \sum_{k=0}^{M-1} \frac{1}{\sqrt{M}} \exp {\left(-2\pi i \frac{jk}{M} \right)} \lambda_k \frac{1}{\sqrt{M}} \exp {\left(2\pi i \frac{ks}{M} \right)} & \\
+ &= \sum_{k=0}^{M-1} \frac{1}{\sqrt{M}} \exp {\left(-2\pi i \frac{jk}{M} \right)} \lambda_k \frac{1}{\sqrt{M}} \exp {\left(2\pi i \frac{ks}{M} \right)} & \cr
 
- &= \frac{1}{M} \sum_{k=0}^{M-1} \exp {\left(2\pi i \frac{k(s-j)}{M} \right)} \lambda_k & \\
+ &= \frac{1}{M} \sum_{k=0}^{M-1} \exp {\left(2\pi i \frac{k(s-j)}{M} \right)} \lambda_k & \cr
 
- &= \frac{1}{M} \sum_{k=0}^{M-1} \exp {\left(2\pi i \frac{k(s-j)}{M} \right)} \sum_{r=0}^{M-1} c_r \exp \left ( 2 \pi i \frac{kr}{M} \right ) & \\
+ &= \frac{1}{M} \sum_{k=0}^{M-1} \exp {\left(2\pi i \frac{k(s-j)}{M} \right)} \sum_{r=0}^{M-1} c_r \exp \left ( 2 \pi i \frac{kr}{M} \right ) & \cr
 
- &= \frac{1}{M} \sum_{r=0}^{M-1} c_r \sum_{k=0}^{M-1} \exp {\left(2\pi i \frac{k(s-j + r)}{M} \right)} & \\
+ &= \frac{1}{M} \sum_{r=0}^{M-1} c_r \sum_{k=0}^{M-1} \exp {\left(2\pi i \frac{k(s-j + r)}{M} \right)} & \cr
 
- &= \frac{1}{M} \sum_{r=0}^{M-1} c_r \cdot M \delta_{M ~ | ~ s-j+r} & \text{by } (\dag) \\
+ &= \frac{1}{M} \sum_{r=0}^{M-1} c_r \cdot M \delta_{M ~ | ~ s-j+r} & \text{by } (\dag) \cr
 
- &= \sum_{r=0}^{M-1} c_r \cdot \delta_{(s-j+r) \in \{ 0, ~ M \}} & -(M-1) \leq s-j+r \leq 2(M-1) \\
+ &= \sum_{r=0}^{M-1} c_r \cdot \delta_{(s-j+r) \in \{ 0, ~ M \}} & -(M-1) \leq s-j+r \leq 2(M-1) \cr
 
- &= \sum_{r=0}^{M-1} c_r \cdot \delta_{r \in \{ j-s, ~ M+j-s \}} & \\
+ &= \sum_{r=0}^{M-1} c_r \cdot \delta_{r \in \{ j-s, ~ M+j-s \}} & \cr
 
  &= \begin{cases} 
-        c_{M-|j-s|}, & j < s, \\
-         &  \\
-        c_{|j-s|}, & j \geq s \\
-    \end{cases} & \\
+        c_{M-|j-s|}, & j < s, \cr
+         &  \cr
+        c_{|j-s|}, & j \geq s \cr
+    \end{cases} & \cr
 
- &= C_{js} & \forall j, ~ s \in \{ 0, ~ \cdots, ~ M-1 \} \\
+ &= C_{js} & \forall j, ~ s \in \{ 0, ~ \cdots, ~ M-1 \} \cr
  
 \end{aligned}$$
 
@@ -316,15 +316,15 @@ $$C = (Q \Lambda^{1/2} Q^*) \cdot (Q \Lambda^{1/2} Q^*) = (Q \Lambda^{1/2} Q^*) 
 $$ \begin{aligned}
 (\xi_1, ~ \cdots, ~ \xi_{N-1}, ~ \xi_{N-1}, ~ \cdots, ~ \xi_1)
 
- &= S\zeta & \\
+ &= S\zeta & \cr
 
- &= Q \Lambda^{1/2} Q^* \zeta & \\
+ &= Q \Lambda^{1/2} Q^* \zeta & \cr
 
- &= \left( \frac{1}{\sqrt{M}} Q \right) \Lambda^{1/2} \left( \sqrt{M} Q^* \right) \zeta & \\
+ &= \left( \frac{1}{\sqrt{M}} Q \right) \Lambda^{1/2} \left( \sqrt{M} Q^* \right) \zeta & \cr
 
- &= \left( \frac{1}{\sqrt{M}} Q \right) \Lambda^{1/2} \text{DFT}^{-1} (\zeta) & \\
+ &= \left( \frac{1}{\sqrt{M}} Q \right) \Lambda^{1/2} \text{DFT}^{-1} (\zeta) & \cr
 
- &= \text{DFT} \left( \Lambda^{1/2} \text{DFT}^{-1} (\zeta) \right) & \\
+ &= \text{DFT} \left( \Lambda^{1/2} \text{DFT}^{-1} (\zeta) \right) & \cr
 \end{aligned}$$
 
 ## Simulation results
