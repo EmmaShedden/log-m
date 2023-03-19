@@ -1,5 +1,7 @@
 # Wood-Chan (Circulant Method) Algorithm
 
+$$\begin{aligned} A & = B \\ & = C \end{aligned}$$
+
 ## Mathematical foundation
 Source: [_Fractional Brownian motion in a Nutshell_, Georgiy Shevchenko](https://drive.google.com/file/d/1BEjP1AHJWwW1HtJDZcKPLzWJ1wXDoxcW/view)
 
@@ -39,62 +41,62 @@ $$ \mathbb{E}(\xi_k)
 $$ \begin{aligned}
 \text{Cov}(\xi_i, ~ \xi_j) 
 
- &= \text{Cov}(B_i^H - B_{i-1}^H, ~ B_j^H - B_{j-1}^H) & \text{definition of } \xi \cr
+ &= \text{Cov}(B_i^H - B_{i-1}^H, ~ B_j^H - B_{j-1}^H) & \text{definition of } \xi \\
 
  &= \mathbb{E} \left[ \left(B_i^H - B_{i-1}^H \right) \left(B_j^H - B_{j-1}^H \right) \right] - \mathbb{E} \left[B_i^H - B_{i-1}^H \right] \cdot \mathbb{E} \left[B_j^H - B_{j-1}^H \right] 
-    & \text{definition of covariance} \cr
+    & \text{definition of covariance} \\
 
  &= \mathbb{E} \left[ \left(B_i^H - B_{i-1}^H \right) \left(B_j^H - B_{j-1}^H \right) \right] - \left(\mathbb{E} \left[B_i^H \right] - \mathbb{E} \left[B_{i-1}^H \right] \right) \cdot \left(\mathbb{E} \left[B_j^H \right] - \mathbb{E} \left[B_{j-1}^H \right] \right) 
-    & \text{linearity of expectation} \cr
+    & \text{linearity of expectation} \\
  
  &= \mathbb{E} \left[ \left(B_i^H - B_{i-1}^H \right) \left(B_j^H - B_{j-1}^H \right) \right] - (0 - 0) (0 - 0) 
-    & B^H \text{ is centered by definition} \cr
+    & B^H \text{ is centered by definition} \\
  
  &= \mathbb{E} \left[B_i^H B_j^H - B_i^H B_{j-1}^H - B_{i-1}^H B_j^H + B_{i-1}^H B_{j-1}^H \right] 
-    & \cr
+    & \\
  
  &= \mathbb{E} \left[B_i^H B_j^H \right]
   - \mathbb{E} \left[B_i^H B_{j-1}^H \right]
   - \mathbb{E} \left[B_{i-1}^H B_j^H \right]
   + \mathbb{E} \left[B_{i-1}^H B_{j-1}^H \right] 
-    & \text{linearity of expectation} \cr
+    & \text{linearity of expectation} \\
  
- &=                 \frac{1}{2} \left(i^{2H} + j^{2H} - \left| i - j \right|^{2H} \right) & \cr
-  &\hspace{0.4cm} - \frac{1}{2} \left(i^{2H} + (j-1)^{2H} - \left| i - (j-1) \right|^{2H} \right) & \cr
-  &\hspace{0.4cm} - \frac{1}{2} \left((i-1)^{2H} + j^{2H} - \left| (i-1) - j \right|^{2H} \right)  & \cr
+ &=                 \frac{1}{2} \left(i^{2H} + j^{2H} - \left| i - j \right|^{2H} \right) & \\
+  &\hspace{0.4cm} - \frac{1}{2} \left(i^{2H} + (j-1)^{2H} - \left| i - (j-1) \right|^{2H} \right) & \\
+  &\hspace{0.4cm} - \frac{1}{2} \left((i-1)^{2H} + j^{2H} - \left| (i-1) - j \right|^{2H} \right)  & \\
   &\hspace{0.4cm} + \frac{1}{2} \left((i-1)^{2H} + (j-1)^{2H} - \left| (i-1) - (j-1) \right|^{2H} \right)
-    & \text{definition of fBm} \cr
+    & \text{definition of fBm} \\
  
  &= \frac{1}{2} \left(- | i - j |^{2H}
                       + | i - (j-1) |^{2H}
                       + | (i-1) - j |^{2H}
                       - | (i-1) - (j-1) |^{2H}
                 \right) 
-    & \cr
+    & \\
  
  &= \frac{1}{2} \left(-2 | i - j |^{2H}
                        + | i - (j-1) |^{2H}
                        + | (i-1) - j |^{2H}
                 \right) 
-    & \cr
+    & \\
  
  &= \frac{1}{2} \left(-2 | i-j |^{2H}
                        + | i-j+1 |^{2H}
                        + | i-j-1 |^{2H}
                 \right) 
-    & \cr
+    & \\
  
  &= \frac{1}{2} \left(-2 | i-j |^{2H}
                        + | i-j+1 |^{2H}
                        + | i-j-1 |^{2H}
                 \right)
-    & (*) \cr
+    & (*) \\
  
  &= \frac{1}{2} \left(-2 n^{2H}
                        + (n+1)^{2H}
                        + (n-1)^{2H}
                 \right)
-    & \text{where } n := |i-j| \text{, } i \neq j \in I_1 \cr \cr
+    & \text{where } n := |i-j| \text{, } i \neq j \in I_1 \\ \\
 
 \text{and ~ Cov}(\xi_i, ~ \xi_i)
  
@@ -102,10 +104,10 @@ $$ \begin{aligned}
                        + | i-i+1 |^{2H}
                        + | i-i-1 |^{2H}
                 \right)
-    & \text{same as above, up to } (*); ~ j := i \cr
+    & \text{same as above, up to } (*); ~ j := i \\
 
  &= \frac{1}{2} \left(1^{2H} + 1^{2H} \right)
-    & \cr
+    & \\
 
  &= 1 & \text{where } i \in I_1
 \end{aligned}$$
