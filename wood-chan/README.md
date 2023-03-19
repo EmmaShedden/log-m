@@ -1,7 +1,5 @@
 # Wood-Chan (Circulant Method) Algorithm
 
-$$\begin{aligned} A & = B \\ & = C \end{aligned}$$
-
 ## Mathematical foundation
 Source: [_Fractional Brownian motion in a Nutshell_, Georgiy Shevchenko](https://drive.google.com/file/d/1BEjP1AHJWwW1HtJDZcKPLzWJ1wXDoxcW/view)
 
