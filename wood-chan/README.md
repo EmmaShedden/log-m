@@ -251,7 +251,7 @@ where the last step references the construction of the circulant matrix [above](
 $$C = (Q \Lambda^{1/2} Q^{\*}) \cdot (Q \Lambda^{1/2} Q^{\*}) = (Q \Lambda^{1/2} Q^{\*}) \cdot (Q \Lambda^{1/2} Q^{\*})^{\*}$$
 
 
-- Let $S := Q \Lambda^{1/2} Q^*$. Therefore, $S$ is real. (TODO)
+- Let $S := Q \Lambda^{1/2} Q^*$. By uniqueness of the square root of $C$, $S$ is real. [(source)](https://www.sciencedirect.com/science/article/pii/S0024379500002433)
 
 - Therefore $(\xi_1, ~ \cdots, ~ \xi_{N-1}, ~ \xi_{N-1}, ~ \cdots, ~ \xi_1) = S\zeta$ where $\zeta$ is standard Gaussian. (TODO)
 
