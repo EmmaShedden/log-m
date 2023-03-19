@@ -5,9 +5,9 @@
 Source: [_Fractional Brownian motion in a Nutshell_, Georgiy Shevchenko](https://drive.google.com/file/d/1BEjP1AHJWwW1HtJDZcKPLzWJ1wXDoxcW/view)
 
 ### Problem setup
-- Let $T := \{ 0, \frac{1}{N}, \frac{2}{N}, \cdots, \frac{N-1}{N}, 1 \}$ be the discretized unit time interval with $N$ increments.
+- Let $T := \lbrace 0, \frac{1}{N}, \frac{2}{N}, \cdots, \frac{N-1}{N}, 1 \rbrace$ be the discretized unit time interval with $N$ increments.
 
-- Let $t_k = t_k^N := \frac{k}{N} \in T$ for $k \in I_0 := \{0, \cdots, N\}$ denote the timestamps.
+- Let $t_k = t_k^N := \frac{k}{N} \in T$ for $k \in I_0 := \lbrace0, \cdots, N\rbrace$ denote the timestamps.
 
 - Let $B_t^H$ for $t \in T$ be the value of an fBm with Hurst parameter $H$ at time $t$.
     - Since $B^H$ is self-stationary, $B_{t_k}^H = B_{k/N}^H = N^{-2H} B_k^H$ where $k \in I_0$.
@@ -16,7 +16,7 @@ Source: [_Fractional Brownian motion in a Nutshell_, Georgiy Shevchenko](https:/
 
 $$ \text{Cov}(B^H_s, B^H_t) = \mathbb{E}[B^H_s B^H_t] = \frac{1}{2}(t^{2H} + s^{2H} - |t - s|^{2H}) $$
 
-- Let $\xi_k = \xi_k^H := B_k^H - B_{k-1}^H = N^{-2H} \left ( B_{t_k}^H - B_{t_{k-1}}^H \right )$ for $k \in I_1 := \{1, \cdots, N\}$.
+- Let $\xi_k = \xi_k^H := B_k^H - B_{k-1}^H = N^{-2H} \left ( B_{t_k}^H - B_{t_{k-1}}^H \right )$ for $k \in I_1 := \lbrace1, \cdots, N\rbrace$.
     - $\xi_0 = \xi_0^H := B_0^H = 0$ with probability $1$.
 
 - Now, $\xi := (\xi_1, \cdots, \xi_N)$ is a centered Gaussian vector:
@@ -95,7 +95,7 @@ $$ \text{cov}(\xi) = \begin{pmatrix}
 ### Circulant matrix
 - Let $M := 2(N-1)$.
 
-- Let the coefficients $c_k$ for $k \in \{ 0, \cdots, M-1 \}$ be defined as:
+- Let the coefficients $c_k$ for $k \in \lbrace 0, \cdots, M-1 \rbrace$ be defined as:
 
 $$\begin{aligned}
 c_0 &= 1, & \\
@@ -125,13 +125,13 @@ $$ C := \text{circ}(c_0, ~ \cdots, ~ c_{M-1}) =
 \end{pmatrix}
 $$
 
-- Observe that $C_{jk} = c_{k-j} = c_{|k-j|}$ for $j \leq k$ (i.e. on/above the main diagonal), and $C_{jk} = c_{M-j+k} = c_{M-|k-j|}$ for $j > k$ (i.e. below the main diagonal). But in fact, $c_r = c_{M-r} = \rho_H(r)$ for all $r \in \{ 1, ~ \cdots, ~ M-1 \}$. So $C_{jk} = c_{|k-j|} = c_{M-|k-j|}$ for all $j, ~ k \in \{ 0, ~ \cdots, ~ M-1 \}$ such that $|k-j| \not \in \{ 0, ~ M \}$ i.e. $M ~ \nmid ~ j-k$.
+- Observe that $C_{jk} = c_{k-j} = c_{|k-j|}$ for $j \leq k$ (i.e. on/above the main diagonal), and $C_{jk} = c_{M-j+k} = c_{M-|k-j|}$ for $j > k$ (i.e. below the main diagonal). But in fact, $c_r = c_{M-r} = \rho_H(r)$ for all $r \in \lbrace 1, ~ \cdots, ~ M-1 \rbrace$. So $C_{jk} = c_{|k-j|} = c_{M-|k-j|}$ for all $j, ~ k \in \lbrace 0, ~ \cdots, ~ M-1 \rbrace$ such that $|k-j| \not \in \lbrace 0, ~ M \rbrace$ i.e. $M ~ \nmid ~ j-k$.
 
-- Let $Q := ( q_{jk} )_{j, k \in \{ 0, ~ \cdots, ~ M-1 \}}$ with coefficients proportional to $M$-th roots of unity:
+- Let $Q := ( q_{jk} )_{j, k \in \lbrace 0, ~ \cdots, ~ M-1 \rbrace}$ with coefficients proportional to $M$-th roots of unity:
 
 $$ q_{jk} = \frac{1}{\sqrt{M}} \exp {\left( -2\pi i \frac{jk}{M} \right)} $$
 
-- Observe that $Q^* =: (q_{jk}^*) = (\overline{q_{kj}}) = (\overline{q_{jk}})$ so that $\forall j, ~ k \in \{0, ~ \cdots, ~ M-1 \}$:
+- Observe that $Q^* =: (q_{jk}^*) = (\overline{q_{kj}}) = (\overline{q_{jk}})$ so that $\forall j, ~ k \in \lbrace0, ~ \cdots, ~ M-1 \rbrace$:
 
 $$\begin{aligned}
 (QQ^*)_{jk}
@@ -142,12 +142,12 @@ $$\begin{aligned}
  &= \begin{cases} 
         \displaystyle{\sum_{r=0}^{M-1} \frac{1}{M} \cdot 1}, & k = j, \\
          &  \\
-        \displaystyle{ \frac{1}{M} \cdot \frac{1 - \exp \{2 \pi i (k-j)\} }{1-\exp \{ 2 \pi i \frac{k-j}{M} \} } }, & k \neq j \\
+        \displaystyle{ \frac{1}{M} \cdot \frac{1 - \exp \lbrace2 \pi i (k-j)\rbrace }{1-\exp \lbrace 2 \pi i \frac{k-j}{M} \rbrace } }, & k \neq j \\
     \end{cases} & \text{by the geometric series formula} \\
  &= \begin{cases} 
         \displaystyle{\frac{1}{M} \cdot M}, & k = j, \\
          &  \\
-        \displaystyle{ \frac{1}{M} \cdot \frac{1 - 1^{k-j} }{1-\exp \{ 2 \pi i \frac{k-j}{M} \} } }, & k \neq j \\
+        \displaystyle{ \frac{1}{M} \cdot \frac{1 - 1^{k-j} }{1-\exp \lbrace 2 \pi i \frac{k-j}{M} \rbrace } }, & k \neq j \\
     \end{cases} & \text{note the denominator is nonzero by assumption} \\
  &= \delta_{jk}
 \end{aligned}$$
@@ -167,14 +167,14 @@ $$\begin{aligned}
 - The discrete Fourier transform takes as input the coefficient representation of a polynomial and outputs a point-value representation of the polynomial, where the points lie on the unit circle. In particular:
     - Let $f(x) = \displaystyle{ \sum_{k=0}^{n-1} a_k x^k }$ be a polynomial in $\mathbb{C}$ of degree $n-1$.
     - Then the input is $(a_0, ~ \cdots, ~ a_{n-1}) \in \mathbb{C}^n$.
-    - DFT returns the point-value representation where the points are the $n$-th roots of unity, i.e. $(X_0, ~ \cdots, ~ X_{n-1})$ where $X_k = f(x_k)$ for $\displaystyle{ x_k = \exp(-2 \pi i \frac{k}{n}) }$, $k \in \{ 0, ~ \cdots, ~ n-1 \}$.
+    - DFT returns the point-value representation where the points are the $n$-th roots of unity, i.e. $(X_0, ~ \cdots, ~ X_{n-1})$ where $X_k = f(x_k)$ for $\displaystyle{ x_k = \exp(-2 \pi i \frac{k}{n}) }$, $k \in \lbrace 0, ~ \cdots, ~ n-1 \rbrace$.
 
 
 - In other words, for input vector $a = (a_0, ~ \cdots, ~ a_{n-1}) \in \mathbb{C}^n$, DFT outputs $\text{DFT}(a) = X = (X_0, ~ \cdots, ~ X_{n-1}) \in \mathbb{C}^n$ such that:
 
 $$ X_j
  = \sum_{k=0}^{n-1} a_k \exp \left (-2 \pi i \frac j n \right )^k
- = \sum_{k=0}^{n-1} a_k \exp \left (-2 \pi i \frac{jk}{n} \right ) ~~~~ \forall j \in \{ 0, ~ \cdots, ~ n-1 \} $$
+ = \sum_{k=0}^{n-1} a_k \exp \left (-2 \pi i \frac{jk}{n} \right ) ~~~~ \forall j \in \lbrace 0, ~ \cdots, ~ n-1 \rbrace $$
 
 - Therefore $\displaystyle{ Qa = \frac{1}{\sqrt{M}} \text{DFT}(a) }$ for any vector $a \in \mathbb{C}^{M}$.
 
@@ -184,13 +184,13 @@ $$ X_j
 
 $$\begin{aligned}
 (\text{DFT}^{-1} \circ \text{DFT})(a) &= \text{DFT}^{-1}(X) & \\
- &= \left ( \frac{1}{n} \sum_{j=0}^{n-1} X_j \exp \left (2 \pi i \frac{r}{n} \right )^j \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \\
- &= \frac{1}{n} \left ( \sum_{j=0}^{n-1} X_j \exp \left (2 \pi i \frac{jr}{n} \right ) \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \\
- &= \frac{1}{n} \left ( \sum_{j=0}^{n-1} \sum_{k=0}^{n-1} a_k \exp \left (-2 \pi i \frac{jk}{n} \right ) \exp \left (2 \pi i \frac{jr}{n} \right ) \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \\
- &= \frac{1}{n} \left ( \sum_{k=0}^{n-1} a_k \sum_{j=0}^{n-1} \exp \left (2 \pi i \frac{j(r-k)}{n} \right ) \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \\
- &= \frac{1}{n} \left ( \sum_{k=0}^{n-1} a_k n \delta_{kr} \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \text{by } (\dagger) \text{ below with } m = r - k \\
- &= \left ( \sum_{k=0}^{n-1} a_k \delta_{kr} \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \\
- &=  ( a_r )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \\
+ &= \left ( \frac{1}{n} \sum_{j=0}^{n-1} X_j \exp \left (2 \pi i \frac{r}{n} \right )^j \right )_{r \in \lbrace 0, ~ \cdots, ~ n-1 \rbrace} & \\
+ &= \frac{1}{n} \left ( \sum_{j=0}^{n-1} X_j \exp \left (2 \pi i \frac{jr}{n} \right ) \right )_{r \in \lbrace 0, ~ \cdots, ~ n-1 \rbrace} & \\
+ &= \frac{1}{n} \left ( \sum_{j=0}^{n-1} \sum_{k=0}^{n-1} a_k \exp \left (-2 \pi i \frac{jk}{n} \right ) \exp \left (2 \pi i \frac{jr}{n} \right ) \right )_{r \in \lbrace 0, ~ \cdots, ~ n-1 \rbrace} & \\
+ &= \frac{1}{n} \left ( \sum_{k=0}^{n-1} a_k \sum_{j=0}^{n-1} \exp \left (2 \pi i \frac{j(r-k)}{n} \right ) \right )_{r \in \lbrace 0, ~ \cdots, ~ n-1 \rbrace} & \\
+ &= \frac{1}{n} \left ( \sum_{k=0}^{n-1} a_k n \delta_{kr} \right )_{r \in \lbrace 0, ~ \cdots, ~ n-1 \rbrace} & \text{by } (\dagger) \text{ below with } m = r - k \\
+ &= \left ( \sum_{k=0}^{n-1} a_k \delta_{kr} \right )_{r \in \lbrace 0, ~ \cdots, ~ n-1 \rbrace} & \\
+ &=  ( a_r )_{r \in \lbrace 0, ~ \cdots, ~ n-1 \rbrace} & \\
  &= a & \\
 \end{aligned}$$
 
@@ -201,12 +201,12 @@ $$\begin{aligned}
  &= \begin{cases} 
         \displaystyle{\sum_{j=0}^{n-1} 1^{jm / n}}, & n ~ | ~ m, \text{ i.e. } \frac m n \in \mathbb{Z} \\\
          &  \\\
-        \displaystyle{ \frac{1 - \exp \{2 \pi i m\} }{1-\exp \{ 2 \pi i \frac{m}{n} \} } }, & n ~ \nmid ~ m \\\
+        \displaystyle{ \frac{1 - \exp \lbrace2 \pi i m\rbrace }{1-\exp \lbrace 2 \pi i \frac{m}{n} \rbrace } }, & n ~ \nmid ~ m \\\
     \end{cases} & \text{by the geometric series formula} \\\
  &= \begin{cases} 
         n, & n ~ | ~ m, \\\
          &  \\\
-        \displaystyle{ \frac{1 - 1^{m} }{1-\exp \{ 2 \pi i \frac{m}{n} \} } }, & n ~ \nmid ~ m \\\
+        \displaystyle{ \frac{1 - 1^{m} }{1-\exp \lbrace 2 \pi i \frac{m}{n} \rbrace } }, & n ~ \nmid ~ m \\\
     \end{cases} & \text{note the denominator is nonzero by assumption} \\\
  &= n \delta_{n ~ | ~ m} & \text{for any } n \neq 0, m \in \mathbb{Z} \hspace2ex (\dagger)
 \end{aligned}$$
@@ -216,7 +216,7 @@ $$\begin{aligned}
 - So $\text{DFT} \circ \text{DFT}^{-1} = \text{DFT}^{-1} \circ \text{DFT} = I_n$. This can also be seen using the relationship with $Q$ and $Q^*$ given above.
 
 ### Theorem 6.1
-- Let $\displaystyle{ \lambda_k := \sum_{j=0}^{M-1}c_j \exp(2 \pi i \frac{jk}{M}) }$ for $k \in \{ 0, ~ \cdots, ~ M-1 \}$.
+- Let $\displaystyle{ \lambda_k := \sum_{j=0}^{M-1}c_j \exp(2 \pi i \frac{jk}{M}) }$ for $k \in \lbrace 0, ~ \cdots, ~ M-1 \rbrace$.
 
 - Let $\Lambda := \text{diag}(\lambda_0, ~ \cdots, ~ \lambda_{M-1})$ be the diagonal matrix with $\lambda_k$'s along the diagonal.
 
@@ -232,14 +232,14 @@ $$\begin{aligned}
  &= \frac{1}{M} \sum_{k=0}^{M-1} \exp {\left(2\pi i \frac{k(s-j)}{M} \right)} \sum_{r=0}^{M-1} c_r \exp \left ( 2 \pi i \frac{kr}{M} \right ) & \\
  &= \frac{1}{M} \sum_{r=0}^{M-1} c_r \sum_{k=0}^{M-1} \exp {\left(2\pi i \frac{k(s-j + r)}{M} \right)} & \\
  &= \frac{1}{M} \sum_{r=0}^{M-1} c_r \cdot M \delta_{(M ~ | ~ s-j+r)} & \text{by } (\dagger) \\
- &= \sum_{r=0}^{M-1} c_r \cdot \delta_{(s-j+r) \in \{ 0, ~ M \}} & -(M-1) \leq s-j+r \leq 2(M-1) \\
- &= \sum_{r=0}^{M-1} c_r \cdot \delta_{r \in \{ j-s, ~ M+j-s \}} & \\
+ &= \sum_{r=0}^{M-1} c_r \cdot \delta_{(s-j+r) \in \lbrace 0, ~ M \rbrace} & -(M-1) \leq s-j+r \leq 2(M-1) \\
+ &= \sum_{r=0}^{M-1} c_r \cdot \delta_{r \in \lbrace j-s, ~ M+j-s \rbrace} & \\
  &= \begin{cases} 
         c_{M-|j-s|}, & j < s, \\
          &  \\
         c_{|j-s|}, & j \geq s \\
     \end{cases} & \\
- &= C_{js} & \forall j, ~ s \in \{ 0, ~ \cdots, ~ M-1 \} \\
+ &= C_{js} & \forall j, ~ s \in \lbrace 0, ~ \cdots, ~ M-1 \rbrace \\
 \end{aligned}$$
 
 where the last step references the construction of the circulant matrix [above](#circulant-matrix). Therefore $Q \Lambda Q^* = C$.
