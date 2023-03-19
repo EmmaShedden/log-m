@@ -36,7 +36,7 @@ $$ \mathbb{E}(\xi_k)
 ### Covariance matrix of $\xi$
 - We can calculate the covariance function (matrix) of $\xi$ using its relationship to $B^H$:
 
-$$ \begin{align*}
+$$ \begin{aligned}
 \text{Cov}(\xi_i, ~ \xi_j) 
 
  &= \text{Cov}(B_i^H - B_{i-1}^H, ~ B_j^H - B_{j-1}^H) & \text{definition of } \xi \\
@@ -108,7 +108,7 @@ $$ \begin{align*}
     & \\
 
  &= 1 & \text{where } i \in I_1
-\end{align*}$$
+\end{aligned}$$
 
 - Observe that the covariance depends only on the difference between the timestamps, not their values; in other words, the sequence $\xi_1, \cdots, \xi_N$ is a stationary Gaussian process.
     - This is essentially a special case of the proof that fBm has stationary increments; the general version is not much different.
@@ -134,12 +134,12 @@ $$ \text{cov}(\xi) = \begin{pmatrix}
 
 - Let the coefficients $c_k$ for $k \in \{ 0, \cdots, M-1 \}$ be defined as:
 
-$$\begin{align*}
+$$\begin{aligned}
 c_0 &= 1, & \\
 c_k &= \rho_H(k), & 1 \leq k \leq N-1  \\
 c_k &= \rho_H(M-k), & N \leq k \leq M-1 \\
 \text{which imply } ~~~ c_{M-k} &= \rho_H(k), & 1 \leq k \leq N-1
-\end{align*}$$
+\end{aligned}$$
 
 - Let $C$ denote the circulant matrix on $c_0, ~ \cdots, ~ c_{M-1}$:
 
@@ -170,7 +170,7 @@ $$ q_{jk} = \frac{1}{\sqrt{M}} \exp {\left( -2\pi i \frac{jk}{M} \right)} $$
 
 - Observe that $Q^* =: ( q^*_{jk} ) = ( \overline{ q_{kj}} ) = ( \overline{ q_{jk}} )$ so that $\forall j, ~ k \in \{0, ~ \cdots, ~ M-1 \}$:
 
-$$ \begin{align*}
+$$ \begin{aligned}
 (QQ^*)_{jk}
  &= \sum_{r=0}^{M-1} q_{jr} q^*_{rk} & \\
  &= \sum_{r=0}^{M-1} q_{jr} \overline{q_{rk}} & \\
@@ -187,18 +187,18 @@ $$ \begin{align*}
         \displaystyle{ \frac{1}{M} \cdot \frac{1 - 1^{k-j} }{1-\exp \{ 2 \pi i \frac{k-j}{M} \} } }, & k \neq j \\
     \end{cases} & \text{note the denominator is nonzero by assumption} \\
  &= \delta_{jk}
-\end{align*} $$
+\end{aligned} $$
 
 - Therefore by symmetry, $Q Q^* = Q^* Q = I_M$, and $Q$ is unitary.
 
 - Right-multiplying $Q$ and $Q^*$, respectively, by a column vector $a = (a_0, ~ \cdots, ~ a_{M-1})^T \in \mathbb{C}^M$ gives:
 
-$$\begin{align*}
+$$\begin{aligned}
 (Qa)_j &= \sum_{k=0}^{M-1} q_{jk} a_k
  = \frac{1}{\sqrt{M}} \sum_{k=0}^{M-1} a_k \exp {\left( -2\pi i \frac{jk}{M} \right)} & \text{and} \\
 (Q^* a)_j &= \sum_{k=0}^{M-1} \overline{q_{jk}} a_k
  = \frac{1}{\sqrt{M}} \sum_{k=0}^{M-1} a_k \exp {\left( 2\pi i \frac{jk}{M} \right)} & \\
-\end{align*}$$
+\end{aligned}$$
 
 ### Applying DFT
 - The discrete Fourier transform takes as input the coefficient representation of a polynomial and outputs a point-value representation of the polynomial, where the points lie on the unit circle. In particular:
@@ -218,7 +218,7 @@ $$ X_j
 
 - Consider $a$, $X$, and $n$ from above.
 
-$$\begin{align*}
+$$\begin{aligned}
 (\text{DFT}^{-1} \circ \text{DFT})(a) &= \text{DFT}^{-1}(X) & \\
 
  &= \left ( \frac{1}{n} \sum_{j=0}^{n-1} X_j \exp \left (2 \pi i \frac{r}{n} \right )^j \right )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \\
@@ -236,11 +236,11 @@ $$\begin{align*}
  &=  ( a_r )_{r \in \{ 0, ~ \cdots, ~ n-1 \}} & \\
  
  &= a & \\
-\end{align*}$$
+\end{aligned}$$
 
 - Proof of $(\dag)$:
 
-$$\begin{align*}
+$$\begin{aligned}
 \sum_{j=0}^{n-1} \exp \left (2 \pi i \frac{jm}{n} \right )
  &= \begin{cases} 
         \displaystyle{\sum_{j=0}^{n-1} 1^{jm / n}}, & n ~ | ~ m, \text{ i.e. } \frac{m}{n} \in \mathbb{Z} \\
@@ -253,7 +253,7 @@ $$\begin{align*}
         \displaystyle{ \frac{1 - 1^{m} }{1-\exp \{ 2 \pi i \frac{m}{n} \} } }, & n ~ \not | ~ m \\
     \end{cases} & \text{note the denominator is nonzero by assumption} \\
  &= n \delta_{n ~ | ~ m} & \text{for any } n \neq 0, m \in \mathbb{Z}
-\end{align*}$$
+\end{aligned}$$
 
 - So $\displaystyle{ Q^* a = \sqrt{M} \cdot \text{DFT}^{-1}(a) }$ for any vector $a \in \mathbb{C}^{M}$.
 
@@ -266,7 +266,7 @@ $$\begin{align*}
 
 $$ (Q \Lambda)_{jk} = q_{jk} \lambda_k = \frac{1}{\sqrt{M}} \exp {\left( -2\pi i \frac{jk}{M} \right)} \sum_{r=0}^{M-1}c_r \exp(2 \pi i \frac{kr}{M}) $$
 
-$$\begin{align*}
+$$\begin{aligned}
 (Q \Lambda Q^*)_{js} &= \sum_{k=0}^{M-1} (Q \Lambda)_{jk} Q^*_{ks} & \\
 
  &= \sum_{k=0}^{M-1} (Q \Lambda)_{jk} \overline{q_{ks}} & \\
@@ -297,7 +297,7 @@ $$\begin{align*}
 
  &= C_{js} & \forall j, ~ s \in \{ 0, ~ \cdots, ~ M-1 \} \\
  
-\end{align*}$$
+\end{aligned}$$
 
 where the last step references the construction of the circulant matrix [above](#circulant-matrix). Therefore $Q \Lambda Q^* = C$.
 
@@ -313,7 +313,7 @@ $$C = (Q \Lambda^{1/2} Q^*) \cdot (Q \Lambda^{1/2} Q^*) = (Q \Lambda^{1/2} Q^*) 
 
 - This can be computed efficiently using DFT: 
 
-$$ \begin{align*}
+$$ \begin{aligned}
 (\xi_1, ~ \cdots, ~ \xi_{N-1}, ~ \xi_{N-1}, ~ \cdots, ~ \xi_1)
 
  &= S\zeta & \\
@@ -325,7 +325,7 @@ $$ \begin{align*}
  &= \left( \frac{1}{\sqrt{M}} Q \right) \Lambda^{1/2} \text{DFT}^{-1} (\zeta) & \\
 
  &= \text{DFT} \left( \Lambda^{1/2} \text{DFT}^{-1} (\zeta) \right) & \\
-\end{align*}$$
+\end{aligned}$$
 
 ## Simulation results
 
