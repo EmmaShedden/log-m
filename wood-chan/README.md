@@ -268,4 +268,5 @@ $$ \begin{aligned}
 
 ## Simulation results
 
-![Paths of fBm simulated for 9 values of the Hurst parameter](/wood-chan/fBm_9_small.png)
+<!--- ![Paths of fBm simulated for 9 values of the Hurst parameter](/wood-chan/fBm_9_small.png) --->
+<p align="center"><img width="600" src="/wood-chan/fBm_9.png"></p>
